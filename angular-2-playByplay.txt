@@ -1,0 +1,17 @@
+{{}} - Interpolation binding, one way binding from component to view to html
+[] - Property binding. Component to Dom. One way binding from component to view. This allows to bind any property (also attribute) of DOM
+() - Event binding. Dom to Component.
+[()] - 2 way data binding. {Banana box}
+
+
+
+More to the point answers
+Angular-js - benefits/advantage over other frameworks
+Use more 'in my opinion'
+
+Decorator:
+@Input() - 
+provider - They are hierarchical. Children gets access of parent's provider data, but parents dont have access to child's provider.
+
+| async pipe can work with both promise & observable.
+Use Rx observable while dealing with http & promise while dealing with component.

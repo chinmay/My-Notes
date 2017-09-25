@@ -1,0 +1,68 @@
+Forms               --> made up of FormControl & FormGroup.
+
+FormControl         --> single input field. contain field's value and states 
+                        {valid:boolean, dirty:boolean, errors: StringMap<string,any>}
+FormGroup           --> wrapper over collection of formControls.
+
+FormsModule         --> gives ngModel & ngForm
+(If import FormsModule, it will attach ngForm to any <form> tags in view automatically)
+ngForm is a FormGroup type.
+ngForm won't be automatically applied to a <form> that has "formGroup"
+
+ngModel             --> creates a new FormControl that is automatically added to parent FormGroup.
+                        one-way data binding.
+
+ReactiveFormsModule --> gives formControl, ngFormGroup
+
+FormBuilder
+use formGroup in view when we already have FormGroup in component.
+<form [formGroup]="myForm" />
+
+------------------------------------------------------------------
+To create new FormGroup & FormCOntrols, use:
+    - ngForm 
+    - ngModel
+
+To bind an existing FormGroup & FormControl, use:
+    - formGroup
+    - formControl
+------------------------------------------------------------------
+
+Validators:
+
+To use a validator:
+    - assign a validator to the FormControl object.
+    - check the status of validator in view and take action accordingly.
+
+Mandatory field: Validators.requirred
+
+Custom Validator: Takes a FormControl as input and returns a StringMap<string, boolean> where key is "error code"
+
+FormGroup & FormControl has EventEmitter. To watch a change on control:
+    - call control.valueChanges
+    - add observer using .subscribe method
+
+------------------------------------------------------------------
+Dependency Injection:
+
+Register dependency with Angular.
+Describe how the dependency will be injected.
+Inject the dependency
+
+Provider (binding): maps a token {token can be string or class} to a list of dependencies.
+                    It tells Angular how to create an object given the token.
+Injector          : holds set of bindings and responsible for resolving dependencies.
+Dependency        : object that is being injected.
+
+Module + constructor injection || manually using injector.
+
+We can inject:
+    - singleton class       {useClass}
+    - a value               {useValue}
+    - return of a function  {useFActory}
+
+
+
+
+
+

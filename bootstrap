@@ -1,0 +1,4 @@
+container, row              --> 940 px fixed width (12 columns - span1-12)
+container-fluid, row-fluid  --> responsive. columns adjusts as per browser width. 
+
+pull-right                  --> right align

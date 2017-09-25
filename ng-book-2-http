@@ -1,0 +1,24 @@
+HTTP:
+
+http.request            --> returns Observable. we can subscribe() to it.
+
+
+------------------------------------------------------------------
+
+Routing:
+
+Hash based routing  : using # anchor tag.
+HTML5 based routing : browser's navigation history api (using history.pushState) {default in Angular0}
+
+installing routes   : RouterModule.forRoot(routes) in NgModules's imports
+
+RouterOutlet        : directive used to explain angular where in page it should apply routes.
+RouterLink          : directive to use the route without page reload.
+
+location strategy   : the way angular application parse & create path from n to route definitions.
+PathLocationStrategy: HTML5 routing. (default strategy)
+HashLocationStrategy: # based.
+
+ActivatedRoute      : need to import in order to use route parameters.
+
+CanActivate         : to guard protected component.

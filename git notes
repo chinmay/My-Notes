@@ -1,0 +1,55 @@
+git init                --> initialize new repository.
+git clone <url>         --> clone remote repo on local.
+            name        --> clone repo with a different name.
+git status              --> status of repo.
+git log                 --> information about existing comments.
+        --oneline       --> removes dates & author. more readable.
+        --stat          --> includes files & # of lines added / removed in that commit.
+        --patch (-p)    --> shows actual changes made in commit.
+        --decorate      --> includes tag information in output.
+        --author="name" --> filter commits by named author.
+        --grep="search" --> filter commits by grep search.
+git shows               --> display the most recent commit.
+git add                 --> add files from working directory to staging.
+git commit              --> move files from staging to repo.
+        -m "comment"    --> avoid the editor for comments.
+        --amend         --> alter the most recent commit.
+git diff                --> Changes that are saved but not yet committed. similar to 'git log -p'
+git tag -a v1.0         --> created annotated tag with name v1.0 on latest commit.
+        -d v1.0         --> delete tag v1.0
+git tag -a v1.0 a3s45   --> add tag to past commit.
+git branch              --> list all branch names.
+        name            --> create a new branch (on latest commit)
+        -d name         --> delete branch with given name.
+        -D name         --> force delete branch.
+git checkout <name>     --> switch to a different branch.
+            -b <a> <b>  --> create a new branch <a> based upon <b> and switch to branch <a>
+git merge <branch-name> --> merge the branch to current checked out branch & commit.
+git revert <sha>        --> revert a commit with given sha.
+git reset               --> erase commits from repo.
+        --mixed         --> moves the deleted commit to working directory.
+        --soft          --> moves the deleted commit to staging.
+        --hard          --> moves the deleted commit to trash.
+            ^           --> parent commit
+            ~           --> first parent commit
+-------------------------------------------------------------------------------------------------
+git remote              --> to manage remote repository.
+        -v              --> display full url of remote branch. 
+        add             --> add a remote repo to local.
+        rename          --> rename local remote name.
+git push                --> send change sto remote.
+    <remote> <local>    --> push local branch to remote branch.
+git fetch               --> update local with remote, but dont update the master pointer. 
+git pull                --> retrieve updates from remote. (pull + merge)
+git rebase              --> move commits to have a new base.
+        -i HEAD~3       --> telling git to use HEAD~3 as new base for master.
+        -i              --> interactive
+        -p              --> pick
+        -r              --> reword
+        -s              --> squash (used to merge multiple commits into 1)
+-------------------------------------------------------------------------------------------------
+git reset --hard HEAD^  --> undo the merge.(Delete last commit)
+git rebase -i HEAD~3    --> merge last 3 commits into 1.
+HEAD                    --> current location.
+
+git log --oneline --decorate --graph --all  --> shows all branch with pointers.

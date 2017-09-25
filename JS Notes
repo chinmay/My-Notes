@@ -1,0 +1,88 @@
+http://www.toptal.com/javascript/interview-questions
+http://www.toptal.com/javascript#hiring-guide
+
+function func(x){
+   console.log(typeof x, arguments.length);  // type of arguments and length of it
+    return arguments.callee; // called of function
+}
+
+
+this always refers to the current context.
+
+Global Variables − A global variable has global scope which means it is visible everywhere in your JavaScript code.
+Local Variables − A local variable will be visible only within a function where it is defined. Function parameters are always local to that function.
+(A local variable takes precedence over a global variable with the same name.)
+
+.call() is used when the number of the function’s arguments are known to the programmer, as they have to be mentioned as arguments in the call statement. 
+.apply() is used when the number is not known. The function .apply() expects the argument to be an array.
+
+What is closure?
+Closures are created whenever a variable that is defined outside the current scope is accessed from within some inner scope.
+
+Negative Infinity is a number in JavaScript which can be derived by dividing negative number by zero.
+
+
+Timer: Timers are operated within a single thread, and thus events might queue up, waiting to be executed.
+setTimeout(function, delay) function is used to start a timer that calls a particular function after the mentioned delay.
+setInterval(function, delay) function is used to repeatedly execute the given function in the mentioned delay and only halts when cancelled.
+clearInterval(id) function instructs the timer to stop.
+
+“==” checks only for equality in value 
+“===” returns false if either the value or the type of the two variables are different.
+
+The onload function is not run until all the information on the page is loaded. This leads to a substantial delay before any code is executed.
+onDocumentReady loads the code just after the DOM is loaded. This allows early manipulation of the code.
+
+Object has the keys method which can be used to calculate the length of an object:
+Object.keys(counterArray).length
+object.hasOwnProperty(key)
+objects essentially are hashtables; i.e., collections of name-value pairs. keys are always strings.
+
+
+(function(){
+  var a = b = 3;
+})();
+console.log("a defined? " + (typeof a !== 'undefined')); // a = undefined since it is local
+console.log("b defined? " + (typeof b !== 'undefined')); // b = 3 since it is global
+
+console.log(0.1 + 0.2); // 0.30000000000000004
+console.log(0.1 + 0.2 == 0.3); // false - numbers comes with floating point precision
+
+(function() {
+    console.log(1); 
+    setTimeout(function(){console.log(2)}, 1000); 
+    setTimeout(function(){console.log(3)}, 0); 
+    console.log(4);
+})();
+// 1,4,3,2
+
+function sum(x) {
+  if (arguments.length == 2) {
+    return arguments[0] + arguments[1];
+  } else {
+    return function(y) { return x + y; };
+  }
+}
+console.log(sum(2,3));   // Outputs 5
+console.log(sum(2)(3));  // Outputs 5
+
+
+for (var i = 0; i < 5; i++) {
+  var btn = document.createElement('button');
+  btn.appendChild(document.createTextNode('Button ' + i));
+  (function (i) {
+    btn.addEventListener('click', function() { console.log(i); });
+  })(i);
+  document.body.appendChild(btn);
+}
+
+The reason for this is that each function executed within the loop will be executed after the entire loop has completed 
+and all will therefore reference the last value stored in i.
+
+
+var foo = new Object();
+var bar = new Object();
+var map = new Object();
+map[foo] = "foo";
+map[bar] = "bar";
+alert(map[foo]); // bar because it converts object foo to string while putting inside map.

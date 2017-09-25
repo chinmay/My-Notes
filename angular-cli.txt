@@ -1,0 +1,119 @@
+npm i @angular/cli -g          --> install angular cli 
+        or
+npm install -g @angular/cli
+
+ng -v                          --> version of anguar cli.
+
+ng --help                      --> show all commands
+
+ng new my-app                  --> create new application, download all dependencies.
+             --dry-run         --> dont create any files, just list them on command line.
+             --skip-install    --> create files, but skip the install command.
+             --prefix jpmc     --> uses prefix value as selector.
+             --skip-tests      --> wont generate .spec files
+             --style scss      --> uses sass by default (upgrades webpack too)
+             --routing         --> add routing modules in new app.
+
+ng serve                       --> run application (localhost:4200)
+        -o                     --> alias for open
+        -prod
+
+ng doc <keyword ex.component>  --> take us to angular documentation for keyword
+
+ng lint
+        --format stylish        --> color code the output. This makes it easy to read.
+        --fix                   --> Lint and attempt to fix the problem.
+
+ng generate <blueprint> command
+        component customer      --> generate customer.component.ts      alias (ng g c customer)
+        directive search-box    --> generate search-box.directive.ts    alias (ng g d search-box)
+        service customer-data   --> generate customer-data.service.ts   alias (ng g s customer-data)
+        class customer-model    --> generate customer-model.ts          alias (ng g cl customer-model)
+
+Blueprint options
+    component (ng g c <name>)
+        --flat                  --> should a folder be created? {false = create new folder, default true}
+        --inline-template (-it) --> will the template be in .ts file?        
+        --inline-style (-is)    --> will th style be in .ts file?
+        --spec                  --> generate a spec? {false = dont generate, default true}
+        --prefix jpmc           --> change prefix only for this component.
+        --view-encapsulation (-ve) {Emulated}
+        --change-detection (-cd)--> change detection strategy. {OnPush}
+        --dry-run (-d)          --> report the files, dont write them.
+    directive (ng g d <name>)
+    service (ng g s <name>)     --> this wil only create new service, wont 'provide' it to any module. 
+        -m <module-name>        --> create new service and provide to specified module.
+    class, interface, enum
+        ng g cl model/customer  --> create customer class inside model directory. (create directory if not present already)
+        ng g i model/person     --> create interface.
+        ng g e model/gender     --> create enum.
+    pipes
+        ng g p shared/init-caps --> create pipe init-caps.pipe.ts in shared folder and updates app module with that.
+        -m <module-name>        --> if want this pipe in some other module.
+    module
+        ng g m login            --> create login.module.ts
+
+ng test                         --> unit test
+ng e2e                          --> e2e test
+ng build                        --> build app and put it in output folder 'dist'. 
+
+Routing
+    ng g m customer --routing   --> create new module customer with routing
+
+Build
+    ng build                    --> development build. output in '/dist'
+            --dev               --> create dev build. {default value}
+            --prod              --> create prod build.
+            --sourcemap (-sm)   --> enerates sourcemap. {default true for prod}
+            --aot               --> ahead of time compilation
+            --watch (-w)        --> watch and rebuild
+            --environment (-e)  --> build environment
+            --target (-t)       --> build target
+
+Serve
+    ng serve                    --> serve from memory & not from 'dist'
+            -open (-o)          --> opem
+            -port (-p)          --> assign port
+            -live-reload (-lr)  --> live reload
+            -ssl                --> serve on https
+            -proxy-config (-pc) --> run behind proxy 
+
+Test
+    ng test
+        --code-coverage (-cc)   --> run test with code coverage. check for index.html in 'coverage' 
+        --single-run (-sr)      --> run tests only once. useful for CI.
+        --progress              --> output on console
+        --sourcemaps (-sm)      --> source maps for tests.
+        --watch (-w)            --> run tests once and watch for changes.
+
+Integration tests
+    ng e2e                      --> compile, serve & run e2e tests.
+        --config (-c)           --> points to a different config file.
+        --element-explorer (-ee)--> allow element level debugging.
+        --serve (-s)
+        --spec (-sp)
+        --webdriver-update (-wu)--> update the webdriver of protractor.
+
+Guard
+    ng generate guard <name>    --> creates CanActivate component that acts as guard.
+
+
+    
+------------------------------------------------------------------
+| Feature       |         ng build       |      ng build --prod   |
+------------------------------------------------------------------
+Environment         environment.ts          environment.prod.test
+cache-busting       only images in css      all files
+source maps         generated               not generated
+Extracted css       global outut css        yes
+Uglification        no                      yes
+Tree shaking        no                      yes
+AOT (ahead of time) no                      yes
+BUndling            yes                     yes
+
+------------------------------------------------------------------
+
+
+package.json
+    ^2.4.0 --> anything with version >= 2.4.0 but less then 3.0
+angular-cli.json    --> has all configurations for scaffold.

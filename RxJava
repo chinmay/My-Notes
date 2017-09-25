@@ -1,0 +1,113 @@
+Functional programming:
+    - y=f(x) -> For given input parameters there will always be same output. Avoid state variables.
+    - First class function -> We can pass function as parameter to another function.
+
+Function<String, String> toLowerCase = (s) -> {
+    return s.toLowerCase();
+} 
+
+public static concatAndTransform(String a, String b, Function<String, String> transformFunction){
+    if(transformFunction != null){
+        a = transformFunction.apply(a);
+        b = transformFunction.apply(b);
+    }
+    return a + b;
+}
+
+main(){
+    a = "hello";
+    b = "world";
+    syso(concatAndTransform(a,b,toLowerCase))
+}
+
+-----------------------------
+High Order function -> Function that takes function as argument and return a composite function as result. Lazy execution.
+
+Reactive menifesto:
+    - Event driven
+    - Scalable
+    - Resiliant
+    - Responsive
+
+------------------------------
+Observer
+    - onNext(T)
+    - onComplete(T)
+    - onError(Throwable t)
+Subscriber
+    - unSubscribe() - to disconnect
+Observable
+    - Non Blocking
+        - Asynchonous execution supported
+        - Unsubscribe at any point in the event stream.
+    - Blocking
+        - Events are synchronous
+        - BlockingObservale subclass
+        - Can't unsubscribe in the middle of an event stream.
+    - methods
+        - subscribeOn(Scheduler) 
+        - observeOn(Scheduler)
+Schedulers
+    - computation() -> number of threads = number of processors/cors.
+    - currentThread() -> Want to run event thread on current thread.
+    - immidiate() -> doesnt wait for current thread to complete and invoke your handler immediately.
+    - io() -> thread pool that supports io activities.
+    - newThread() -> new thread will be created for each task.
+    - executor(Executor) -> Takes java Executor and convert it to Rx Scheduler.
+    - executor(ScheduledExecutor) -> overloaded version for ScheduledExecutor.
+
+---------------------------------
+Observable Creation:
+
+    - <T>Observable<T> Observable.from(T object[,Scheduler s])
+    - <T>Observable<T> Observable.from(Iterable<T> list[,Scheduler s])
+    - <T>Observable<T> Observable.from(T[] array[,Scheduler s])
+    - <T>Observable<T> Observable.from(Future<T> future[,Scheduler s])
+
+----------------------------------
+Filtering:
+
+
+
+----------------------------------
+Transformation:
+
+Map -> one to one
+flatMap -> one to many
+scan -> Allow to carry forward state from event to event (previous result + next)
+GroupBy -> takes input observables and return grouped observable.
+Buffer (timespan) -> Group incoming event as observable list based upon the provided timespan. 
+
+----------------------------------
+Conditional Operations:
+
+DefaultIfEmpty -> If underlying observable is empty, provide default value.
+SkipWhile -> skip events 
+takeWhile -> opposite of skipWhile.
+takeWhileWithIndex -> takeWhile functionality, but give index as well. 
+    
+amb -> ambigious (takes 2 observables and faver one among them based upon your logic)
+skipUntil -> skip processing events from source observable until (given logic)    
+takeUntil -> continues to take events from source observable until (given logic)  
+
+----------------------------------
+Connectable Observables:
+    - It doesn't emit event until connect() is called.
+    - You can have multiple subscribers listening to event from one observable.
+
+----------------------------------
+Resource Management:
+    - jdbc / network / open file 
+
+----------------------------------
+Subject:  
+    - Easy way to create code that is event based. So components can be de-coupled.
+    - Subject = Subscriber + Observable
+        - PublishSubject -> Events emitted before subscribe's subscribe are not seen.
+        - BehaviorSubject -> need to provide start state event.
+        - AsyncSubject -> Only last state is observed, other gets omitted.
+
+----------------------------------
+
+
+

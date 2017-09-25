@@ -1,0 +1,53 @@
+Problems with concurrent applications:
+- Starvation
+- Deadlock
+- Race Condition
+
+
+Deadlock can be prevented by acquiring the resource is specific order
+"volatile" keyword tells JIT not to perform any optimization that may effect ordering of access to that variable. Each access, read or write, should bypass cache and go to memory.
+"atomic" - Threads do not see partial changes
+
+Memory Barrier - Copying from local or working memory to the main memory.
+
+
+Shared Mutability is pure Evil
+
+IO intensive app -> more # of threads needed
+Computation intensive app -> threads count = # of processors (to reduce context switching)
+
+Keeping the core busy on the problem is more beneficial then distributing the load evenly.
+
+Old Threading Vs New Threading:
+Thread -> ExecutorService
+locks - > Lock Interface
+wait/notify -> CyclicBarrier/CountDownLatch
+
+There’s no escape from dealing with state, but there are three ways to do
+so: shared mutability, isolated mutability, and pure immutability.
+
+We can configure the type of thread pool—single threaded, cached, priority based, scheduled/periodic, or fixed size.
+
+The fork-join API is very useful for problems that can be broken down recursively until small enough to run sequentially.
+
+Do Not start threads from constructor.
+
+Shared mutability—the root of concurrency problems—is where multiple threads can modify a variable. Isolated mutability—a nice compromise that removes most concurrency concerns—is where only one thread (or actor)
+can access a mutable variable, ever.
+
+Actors nicely allow us to isolate mutable state. They work great if a problem can be divided into concurrent tasks that can run independently and communicate
+with each other asynchronously using messages. Actors, however, don’t provide a way to manage consensus across tasks.
+
+Just like in the use of STMs, transactors are useful when the write collisions are highly infrequent. Ideally, if multiple actors have to participate in a quorum or voting of some
+sort, transactors can be quite convenient.
+
+Actors do not prevent deadlocks; it’s possible for two or more actors to wait on one another for messages. We have to design carefully to ensure that the
+coordination between actors doesn’t fall into a deadlock state. Also, we should use timeouts to ensure we don’t wait endlessly for a response from an actor.
+
+A pure function is a function whose return value is only determined by its input.
+Predicate<Integer> even = (number) -> number % 2 == 0;
+
+A function with at least one parameter of type function or a function that returns
+functions is called a higher order function. Of course, higher order functions can be
+pure.
+
