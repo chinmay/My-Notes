@@ -28,3 +28,35 @@ Provides:
     Versioning
     Cryptography 
 
+Consul / Zookeeper / Spring cloud config Server
+    - Http Rest
+    - Output as json / properties / yaml
+    - Backend as git / svn / fileSystem (Making Configuration refresh automatically.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
