@@ -1,0 +1,30 @@
+http://dustin.schultz.io/ps-scf/
+-------------------------------------------------------------------------------------------------
+***  Service Discovery  ***
+
+Spring Cloud Netflix
+    Eureka
+        Server
+        Client
+
+Discovery process:
+    Discovery Server
+    Application Service
+    Application Client
+
+1. Register (Application Service to Discovery Server) s:{Location,port,service identifier}
+2. Lookup (Application Client to Discovery Server) s:{service identifier} r:{location & port}
+3. Consuming (Application Client to Application Service)
+
+Client:
+    EurekaClient
+    DiscoveryClient
+-------------------------------------------------------------------------------------------------
+***   Application Configuration Server  ***
+
+Dedicated, Dynamic, Centralized Key/value store. 
+Provides:
+    Auditing
+    Versioning
+    Cryptography 
+
